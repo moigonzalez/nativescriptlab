@@ -6,27 +6,15 @@ import { NewsService } from "../../shared/services/news.service"
   template: `
     <ActionBar title="HackerNews" class="action-bar"></ActionBar>
     <GridLayout rows="auto, *">
-      <ListView [items]="newsList" row="1" class="small-spacing">
+      <ListView [items]="newsList" row="1" class="news">
         <ng-template let-item="item">
-          <Label [text]="item.title" class="medium-spacing"></Label>
+          <Label [text]="item.title" class="news__item"></Label>
         </ng-template>
       </ListView>
 
     </GridLayout>
   `,
-  styles: [`
-    @keyframes spin {
-      from { transform: rotate(0); } to { transform: rotate(360); }
-    }
-    .logo {
-      animation-name: spin; animation-duration: 10s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-    }
-    Button {
-      width: 25%;
-    }
-  `],
+  styleUrls: ['./pages/home/homecomponent.css'],
   providers: [NewsService]
 })
 export class Home implements OnInit {
@@ -40,8 +28,7 @@ export class Home implements OnInit {
     this.newsService.load()
       .subscribe(loadedNews => {
         loadedNews.forEach((newsObject) => {
-          this.newsList.unshift(newsObject);
-          console.log(newsObject);
+          this.newsList.push(newsObject);
         });
       });
   }
