@@ -11,7 +11,6 @@ import { NewsService } from "../../shared/services/news.service"
           <Label [text]="item.title" class="news__item"></Label>
         </ng-template>
       </ListView>
-
     </GridLayout>
   `,
   styleUrls: ['./pages/home/homecomponent.css'],

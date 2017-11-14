@@ -11,13 +11,13 @@ export class NewsService {
     let headers = new Headers();
 
     console.log('LOADING NEWS')
-    return this.http.get('https://hnapi.herokuapp.com/hackernews?page=1', {
+    return this.http.get('https://hnapi.herokuapp.com/summaries?entries=10', {
       headers: headers
     })
     .map(res => res.json())
     .map(data => {
       let news = [];
-      data.news.forEach((n) => {
+      data.forEach((n) => {
         news.push(n);
       });
       return news;
